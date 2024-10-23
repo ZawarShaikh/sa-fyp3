@@ -1,0 +1,241 @@
+/* admin.css */
+
+/* General styling for the page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Style for the admin panel header */
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+
+/* !------------------------- Nav Bar --------------------------------!*/
+.navbar {
+    display: flex;
+    background-color: #11b1e2;
+    color: #fff;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.navbar img {
+    height: 70px;
+    width: 140px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 20px;
+}
+
+/* !------------------------------- Sliding Text Styles -------------------------------!*/
+.navbar .marquee {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.navbar .marquee p {
+    display: inline-block;
+    font-weight: bold;
+    padding-left: 100%;
+    font-size: 1.0em; /* Adjust the font size here */
+    animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* !------------------------------- Background Images --------------------------------! */
+.background-images {
+    /* Adding 4 background images */
+    background-image: 
+        url('images/text1.jpg'),
+        url('images/text2.jpg'),
+        url('images/audio_video.jpg'),
+        url('images/video.jpg');
+
+    /* Positioning each image in specific locations */
+    background-position: 
+        top left,     /* Image 1 at top left */
+        top right,    /* Image 2 at top right */
+        bottom left,  /* Image 3 at bottom left */
+        bottom right; /* Image 4 at bottom right */
+
+    /* Ensure images don't repeat and are properly sized */
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+
+    /* Size the images appropriately */
+    background-size: 
+        30% 50%,  /* Image 1 (text1.jpg) takes 30% of width and 50% height */
+        30% 50%,  /* Image 2 (text2.jpg) takes 30% of width and 50% height */
+        30% 50%,  /* Image 3 (audio_video.jpg) takes 30% of width and 50% height */
+        30% 50%;  /* Image 4 (video.jpg) takes 30% of width and 50% height */
+
+    /* Overlaying images across the full viewport */
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Keep the background behind other content */
+
+    /* Add opacity for subtle effect */
+    opacity: 0.2; /* Adjust to make images more transparent */
+
+    /* Ensure content appears centered over the background */
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* !------------------------ Product Selection Dropdown menu -----------------------------! */
+.product-selection {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align both h2 and select */
+    justify-content: center; /* Center within the container */
+    margin: 20px; /* Add some spacing around the container */
+    font-family: Arial, sans-serif; /* Set a font for consistency */
+}
+
+.product-selection h2 {
+    font-size: 24px; /* Set the size of the heading */
+    margin-bottom: 10px; /* Add some space below the heading */
+    color: #333; /* Set the heading color */
+    text-align: center; /* Center the text in the h2 */
+}
+
+.product-selection select {
+    width: 100%; /* Make the dropdown full width */
+    max-width: 400px; /* Set a max width so it's not too wide */
+    padding: 10px; /* Add padding inside the dropdown */
+    font-size: 16px; /* Set the font size for the dropdown text */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 4px; /* Make the corners rounded */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    appearance: none; /* Remove default dropdown styling in some browsers */
+    text-align: center; /* Optional: center text inside the dropdown */
+}
+
+.product-selection select:focus {
+    border-color: #007bff; /* Change border color when focused */
+    outline: none; /* Remove outline */
+}
+
+.product-selection button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Make the corners rounded */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    cursor: pointer;
+    text-align: center;
+}
+
+.product-selection button:hover {
+    background-color: #0056b3;
+}
+
+
+/* !--------------------------- Table styling -------------------------------!*/
+/* Basic styles for containers and tables */
+/* Basic styles for containers and tables */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Space between each container */
+}
+
+.review-container {
+    max-height: 300px; /* Limit the height for scrollability */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    flex: 1;
+}
+
+.review-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.review-table th, .review-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.review-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+td {
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+
+/* !------------------------ Styles for pie chart container ------------------------!*/
+.charts-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.chart-box {
+    width: 30%;
+    text-align: center;
+}
+
+.chart-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimodal Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <!-- Div for background images -->
+    <div class="background-images"></div>
+
+
+    <div class="navbar">
+        <div>
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        </div>
+
+        <!-- Marque -->
+        <div class="marquee">
+            <p>Multimodal Sentiment Analysis System for Product Reviews! Check out our latest features and updates.</p>
+        </div>
+
+        <div>
+            <!--<a href="#registration">Registration</a>-->
+            <a href="#services">Services</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+    </div>
+
+    
+
+    <h1>Welcome to Multimodal Sentiment Analysis</h1>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+
+    <!-- Image Grid Section -->
+    <section class="image-grid">
+        <!-- Each image is now wrapped with an <a> tag pointing to a new page -->
+        <a href="{{ url_for('image_page', image_id='Air_Cooler') }}">
+            <img src="{{ url_for('static', filename='images/Air_Cooler.jpg') }}" alt="Air Cooler" class="analysis-image air-cooler" id="101">
+        </a>
+        <a href="{{ url_for('image_page', image_id='Curtains') }}">
+            <img src="{{ url_for('static', filename='images/Curtains.jpg') }}" alt="Curtains" class="analysis-image curtains" id="102">
+        </a>
+        <a href="{{ url_for('image_page', image_id='Dry_Iron') }}">
+            <img src="{{ url_for('static', filename='images/Dry_Iron.jpg') }}" alt="Dry Iron" class="analysis-image dry-iron" id="103">
+        </a>
+        <a href="{{ url_for('image_page', image_id='Mens_Cargo') }}">
+            <img src="{{ url_for('static', filename='images/Mens_Cargo.jpg') }}" alt="Mens Cargo" class="analysis-image mens-cargo" id="104">
+        </a>
+        <a href="{{ url_for('image_page', image_id='Mens_TShirts') }}">
+            <img src="{{ url_for('static', filename='images/Mens_TShirts.jpg') }}" alt="Mens T-Shirts" class="analysis-image mens-tshirts" id="105">
+        </a>
+        <a href="{{ url_for('image_page', image_id='Google_Smart_Home_Speaker') }}">
+            <img src="{{ url_for('static', filename='images/Google_Smart_Home_Speaker.jpg') }}" alt="Google Smart Home Speaker" class="analysis-image smart-speaker" id="106">
+        </a>
+        <a href="{{ url_for('image_page', image_id='Cusions') }}">
+            <img src="{{ url_for('static', filename='images/Cusions.jpg') }}" alt="Cushions" class="analysis-image cushions" id="107">
+        </a>
+        <a href="{{ url_for('image_page', image_id='DSLR_Camera') }}">
+            <img src="{{ url_for('static', filename='images/DSLR_Camera.jpg') }}" alt="DSLR Camera" class="analysis-image dslr-camera" id="108">
+        </a>
+        <a href="{{ url_for('image_page', image_id='Dinner_Set_Plates') }}">
+            <img src="{{ url_for('static', filename='images/Dinner_Set_Plates.jpg') }}" alt="Dinner Set Plates" class="analysis-image dinner-set" id="109">
+        </a>
+        <a href="{{ url_for('image_page', image_id='Electric_Kettle') }}">
+            <img src="{{ url_for('static', filename='images/Electric_Kettle.jpg') }}" alt="Electric Kettle" class="analysis-image electric-kettle" id="110">
+        </a>
+        <a href="{{ url_for('image_page', image_id='Lekme_Iconic_Kajal') }}">
+            <img src="{{ url_for('static', filename='images/Lekme_Iconic_Kajal.jpg') }}" alt="Lakme Kajal" class="analysis-image kajal" id="111">
+        </a>
+    </section>
+
+    <div class="content">
+        <!-- Services Section -->
+        <h2 id="services">Our Services</h2>
+        <p>
+            The tool provides users with real-time feedback on their submitted reviews, analyzing the text, audio, and video to classify the sentiment as positive, negative, or neutral.
+
+            Though general-purpose, the application can be fine-tuned or customized for specific domains, such as customer service, social media, e-commerce reviews, or corporate feedback.
+            
+            The tool can summarize the overall sentiment from multiple reviews into a comprehensive report, helping businesses gauge general user sentiment for specific products or services over time.
+        
+            In addition to classifying sentiment as positive, negative, or neutral, the tool can also provide a scale of emotional intensity, indicating how strongly the user feels about the subject.
+            
+            The service can preprocess user input by cleaning, correcting, or tokenizing the text, allowing for more accurate sentiment predictions.</p>
+        </p>
+    
+
+        <!-- Contact Us Section -->
+        <div class="contact-info" id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: zawarshaikh3@gmail.com, , </p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="www.linkedin.com/in/zawar-shaikh-431074244"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/zzawwarshaikh?igsh=bHFrYWRsZWhrcTZh"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

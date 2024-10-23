@@ -1,0 +1,4 @@
+__pycache__
+.ipynb_checkpoints
+.venv
+/transformer_bert_model/Final_model_balanced/tf_model.h5

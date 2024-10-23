@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+<body>
+    <!-- Div for background images -->
+    <div class="background-images"></div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        </div>
+
+        <!-- Marquee -->
+        <div class="marquee">
+            <p>Multimodal Sentiment Analysis System for Product Reviews!</p>
+        </div>
+    </div>
+
+
+    <h1>Admin Panel</h1>
+
+    <!-- Table displaying reviews and sentiments -->
+    <h2>Sentiment Reviews</h2>
+
+    <div class="product-selection">
+        <h2>Enter which product reviews you want to analyze</h2>
+        <form method="POST" action="/select_product">
+            <select name="product">
+                <option value="" selected disabled>Select a Product</option>
+                {% for product in product_list %}
+                <option value="{{ product | replace(' ', '_') }}">{{ product }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Main container for all review types -->
+    <div class="main-container">
+        <!-- Container for Text Reviews -->
+        <div class="review-container">
+            <h3>Text Reviews</h3>
+            <table class="review-table text-review-table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Reviews</th>
+                    </tr>
+                </thead>
+                {% if text_reviews or text_file_locations %}
+                <tbody>
+                    <!-- For single text -->
+                    {% for pid, reviews in text_reviews %}
+                    <tr>
+                        <td>{{ pid }}</td>
+                        <td>{{ reviews }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                {% endif %}
+            </table>
+            
+        </div>
+
+        <!-- Container for Audio Reviews -->
+        <div class="review-container">
+            <h3>Audio Reviews</h3>
+            <table class="review-table audio-review-table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Reviews</th>
+                    </tr>
+                </thead>
+                {% if audio_file_data or audio_folder_data %}
+                <tbody>
+                    <!-- For Audio file loc -->
+                    {% for pid, audio_file_loc in audio_file_data %}
+                    <tr>
+                        <td>{{ pid }}</td>
+                        <td>{{ audio_file_loc }}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                    <!-- For Audio folder loc -->
+                    {% for pid, audio_folder_loc in audio_folder_data %}
+                    <tr>
+                        <td>{{ pid }}</td>
+                        <td>{{ audio_folder_loc }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                {% endif %}
+            </table>
+        </div>
+
+        <!-- Container for Video Reviews -->
+        <div class="review-container">
+            <h3>Video Reviews</h3>
+            <table class="review-table video-review-table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Reviews</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pid, reviews in video_reviews %}
+                    <tr>
+                        <td>{{ pid }}</td>
+                        <td>{{ reviews }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!-- Visualization: Pie charts of sentiments -->
+    <h2>Sentiment Distribution</h2>
+    <div class="charts-container">
+        <!-- Text Sentiment Pie Chart -->
+        <div class="chart-box">
+            <div class="chart-title">Text</div>
+            <canvas id="textSentimentChart" width="200" height="200"></canvas>
+        </div>
+
+        <!-- Audio Sentiment Pie Chart -->
+        <div class="chart-box">
+            <div class="chart-title">Audio</div>
+            <canvas id="audioSentimentChart" width="200" height="200"></canvas>
+        </div>
+
+        <!-- Video Sentiment Pie Chart -->
+        <div class="chart-box">
+            <div class="chart-title">Video</div>
+            <canvas id="videoSentimentChart" width="200" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- Hidden inputs to store sentiment counts for Text, Audio, Video -->
+    <input type="hidden" id="text-positive-count" value="{{ text_sentiment_count.positive }}">
+    <input type="hidden" id="text-negative-count" value="{{ text_sentiment_count.negative }}">
+    <input type="hidden" id="text-neutral-count" value="{{ text_sentiment_count.neutral }}">
+
+    <input type="hidden" id="audio-positive-count" value="{{ audio_sentiment_count.positive }}">
+    <input type="hidden" id="audio-negative-count" value="{{ audio_sentiment_count.negative }}">
+    <input type="hidden" id="audio-neutral-count" value="{{ audio_sentiment_count.neutral }}">
+
+    <input type="hidden" id="video-positive-count" value="{{ video_sentiment_count.positive }}">
+    <input type="hidden" id="video-negative-count" value="{{ video_sentiment_count.negative }}">
+    <input type="hidden" id="video-neutral-count" value="{{ video_sentiment_count.neutral }}">
+
+
+    <!-- Link to external JavaScript -->
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+
+</body>
+</html>
